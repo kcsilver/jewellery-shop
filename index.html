@@ -74,6 +74,40 @@
             color: var(--gold);
         }
 
+        .header-prices {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-left: auto;
+        }
+
+        .header-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .header-price + .header-price {
+            padding-left: 14px;
+            border-left: 1px solid #eee6d8;
+        }
+
+        .header-price-label {
+            color: var(--gold);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .header-price-value {
+            color: var(--ink);
+            font-size: 0.84rem;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
         .hero {
             position: relative;
             overflow: hidden;
@@ -412,14 +446,39 @@
             margin: 0;
         }
 
+        @media (max-width: 900px) {
+            .site-header {
+                flex-wrap: wrap;
+                gap: 14px 20px;
+            }
+
+            .brand {
+                order: 1;
+            }
+
+            .header-prices {
+                order: 2;
+            }
+
+            nav {
+                order: 3;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
         @media (max-width: 600px) {
             .site-header {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
                 gap: 14px;
                 padding: 16px 20px;
             }
 
             nav {
+                order: 3;
+                width: 100%;
                 flex-wrap: wrap;
                 justify-content: center;
                 gap: 12px 18px;
@@ -455,6 +514,16 @@
             <a href="#prices">Live Rates</a>
             <a href="#contact">Contact Us</a>
         </nav>
+        <div class="header-prices" role="group" aria-label="Live gold and silver rates per 10 grams">
+            <div class="header-price">
+                <span class="header-price-label">Gold · 10g</span>
+                <strong class="header-price-value" id="gold-price-header">Loading…</strong>
+            </div>
+            <div class="header-price">
+                <span class="header-price-label">Silver · 10g</span>
+                <strong class="header-price-value" id="silver-price-header">Loading…</strong>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -632,6 +701,24 @@
 
         refreshMetalPrices();
         window.setInterval(refreshMetalPrices, 30000);
+
+        for (const [sourceId, mirrorId] of [
+            ["gold-price", "gold-price-header"],
+            ["silver-price", "silver-price-header"]
+        ]) {
+            const source = document.getElementById(sourceId);
+            const mirror = document.getElementById(mirrorId);
+            const syncPrice = () => {
+                mirror.textContent = source.textContent;
+            };
+
+            syncPrice();
+            new MutationObserver(syncPrice).observe(source, {
+                childList: true,
+                characterData: true,
+                subtree: true
+            });
+        }
     </script>
 </body>
 </html>
