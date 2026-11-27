@@ -516,7 +516,7 @@
         </nav>
         <div class="header-prices" role="group" aria-label="Live gold and silver rates per 10 grams">
             <div class="header-price">
-                <span class="header-price-label">Gold · 10g</span>
+                <span class="header-price-label">24K Gold · 10g</span>
                 <strong class="header-price-value" id="gold-price-header">Loading…</strong>
             </div>
             <div class="header-price">
@@ -576,13 +576,23 @@
                     <p class="price-unit">per 10 grams</p>
                 </article>
                 <article class="price-card">
+                    <h3>Gold · 22K purity equivalent</h3>
+                    <p class="price-value" id="gold-22-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+                <article class="price-card">
+                    <h3>Gold · 18K purity equivalent</h3>
+                    <p class="price-value" id="gold-18-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+                <article class="price-card">
                     <h3>Silver spot</h3>
                     <p class="price-value" id="silver-price" aria-live="polite">Loading…</p>
                     <p class="price-unit">per 10 grams</p>
                 </article>
             </div>
             <p class="price-status" id="price-status" role="status" aria-live="polite">Connecting to live prices…</p>
-            <p class="price-disclaimer">Indicative international spot rates from Gold-API.com, converted to INR per 10 grams. Final jewellery prices may vary and can include GST, making charges, and local premiums.</p>
+            <p class="price-disclaimer">Indicative international spot rates from Gold-API.com, converted to INR per 10 grams. 22K and 18K are purity-equivalent estimates derived from 24K, not local retail quotes. Final jewellery prices may vary and can include GST, making charges, and local premiums.</p>
         </section>
 
         <section class="collections" aria-labelledby="collections-title">
@@ -648,6 +658,10 @@
             minute: "2-digit",
             timeZoneName: "short"
         });
+        const goldPurityPrices = [
+            { elementId: "gold-22-price", purity: 22 },
+            { elementId: "gold-18-price", purity: 18 }
+        ];
 
         async function updateMetalPrice(symbol, elementId) {
             const priceElement = document.getElementById(elementId);
@@ -665,13 +679,29 @@
                     throw new Error("Price API returned invalid quote data");
                 }
 
-                priceElement.textContent = inrFormatter.format((price / troyOunceInGrams) * 10);
+                const pricePer10Grams = (price / troyOunceInGrams) * 10;
+                priceElement.textContent = inrFormatter.format(pricePer10Grams);
                 priceElement.dataset.loaded = "true";
+                if (symbol === "XAU") {
+                    for (const { elementId: purityElementId, purity } of goldPurityPrices) {
+                        const purityElement = document.getElementById(purityElementId);
+                        purityElement.textContent = inrFormatter.format(pricePer10Grams * purity / 24);
+                        purityElement.dataset.loaded = "true";
+                    }
+                }
                 return updatedAt;
             } catch (error) {
                 console.error(`Unable to update ${symbol} price:`, error);
                 if (priceElement.dataset.loaded !== "true") {
                     priceElement.textContent = "Unavailable";
+                }
+                if (symbol === "XAU") {
+                    for (const { elementId: purityElementId } of goldPurityPrices) {
+                        const purityElement = document.getElementById(purityElementId);
+                        if (purityElement.dataset.loaded !== "true") {
+                            purityElement.textContent = "Unavailable";
+                        }
+                    }
                 }
                 return null;
             }
