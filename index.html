@@ -173,6 +173,63 @@
             text-align: center;
         }
 
+        .inspiration {
+            padding: 70px 24px 78px;
+            text-align: center;
+        }
+
+        .inspiration h2 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            width: min(940px, 100%);
+            margin: 0 auto;
+        }
+
+        .inspiration-card {
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid #eee5d6;
+            text-align: left;
+        }
+
+        .inspiration-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .inspiration-card-copy {
+            padding: 18px 20px 20px;
+        }
+
+        .inspiration-card h3 {
+            margin: 0 0 8px;
+            color: var(--gold);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .inspiration-card p,
+        .inspiration-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .inspiration-note {
+            max-width: 720px;
+            margin: 24px auto 0;
+        }
+
         .market-prices {
             padding: 62px 24px;
             text-align: center;
@@ -282,6 +339,27 @@
             background: #f0e8da;
         }
 
+        .showroom-photo {
+            display: grid;
+            justify-items: center;
+            gap: 8px;
+            margin: 30px auto 0;
+        }
+
+        .showroom-photo img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 360px;
+            border: 1px solid #e8dece;
+            background: var(--white);
+        }
+
+        .showroom-photo figcaption {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -336,11 +414,15 @@
 
         @media (max-width: 600px) {
             .site-header {
+                flex-direction: column;
+                gap: 14px;
                 padding: 16px 20px;
             }
 
             nav {
-                gap: 16px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
             }
 
             nav a {
@@ -356,6 +438,11 @@
             .contact-grid {
                 grid-template-columns: 1fr;
             }
+
+            .inspiration-grid {
+                grid-template-columns: 1fr;
+                width: min(420px, 100%);
+            }
         }
     </style>
 </head>
@@ -364,6 +451,7 @@
         <a class="brand" href="#home">Padma jewellers</a>
         <nav aria-label="Main navigation">
             <a href="#home">Home</a>
+            <a href="#inspiration">Gallery</a>
             <a href="#prices">Live Rates</a>
             <a href="#contact">Contact Us</a>
         </nav>
@@ -377,6 +465,36 @@
                 <p class="hero-copy">Explore beautiful designs for celebrations, special occasions, and every day at Padma Jewellers.</p>
                 <a class="button" href="#contact">Visit Our Showroom</a>
             </div>
+        </section>
+
+        <section class="inspiration" id="inspiration" aria-labelledby="inspiration-title">
+            <p class="eyebrow">For every generation</p>
+            <h2 id="inspiration-title">Jewellery for Life’s Celebrations</h2>
+            <p class="section-copy">A little inspiration for everyday silver and traditional occasion styles.</p>
+            <div class="inspiration-grid">
+                <article class="inspiration-card">
+                    <img src="assets/child-silver-chain.jpg" alt="Child wearing a silver chain" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Silver Chain Inspiration</h3>
+                        <p>A simple silver-chain look for a young wearer.</p>
+                    </div>
+                </article>
+                <article class="inspiration-card">
+                    <img src="assets/child-festive-attire.jpg" alt="Child in cream traditional Indian festive attire" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Festive Little Looks</h3>
+                        <p>Traditional Indian attire for family celebrations.</p>
+                    </div>
+                </article>
+                <article class="inspiration-card">
+                    <img src="assets/women-sarees.jpg" alt="Two women wearing traditional sarees and jewellery" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Sarees &amp; Gold Details</h3>
+                        <p>Classic occasion styling with traditional jewellery.</p>
+                    </div>
+                </article>
+            </div>
+            <p class="inspiration-note">Stock photos are for style inspiration only. They do not show Padma Jewellers products or imply endorsement.</p>
         </section>
 
         <section class="market-prices" id="prices" aria-labelledby="prices-title">
@@ -425,6 +543,10 @@
         <section class="contact" id="contact">
             <p class="eyebrow">We’d love to see you</p>
             <h2>Visit or Get in Touch</h2>
+            <figure class="showroom-photo">
+                <img src="assets/padma-showroom.webp" alt="Padma Jewellers showroom counter and sign" loading="lazy" decoding="async">
+                <figcaption>Padma Jewellers · House of Silver &amp; Ratnas</figcaption>
+            </figure>
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>Call the Showroom</h3>
