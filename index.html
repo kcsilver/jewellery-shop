@@ -386,16 +386,16 @@
                 <article class="price-card">
                     <h3>Gold · 24K spot equivalent</h3>
                     <p class="price-value" id="gold-price" aria-live="polite">Loading…</p>
-                    <p class="price-unit">per gram</p>
+                    <p class="price-unit">per 10 grams</p>
                 </article>
                 <article class="price-card">
                     <h3>Silver spot</h3>
                     <p class="price-value" id="silver-price" aria-live="polite">Loading…</p>
-                    <p class="price-unit">per gram</p>
+                    <p class="price-unit">per 10 grams</p>
                 </article>
             </div>
             <p class="price-status" id="price-status" role="status" aria-live="polite">Connecting to live prices…</p>
-            <p class="price-disclaimer">Indicative international spot rates from Gold-API.com, converted to INR per gram. Final jewellery prices may vary and can include GST, making charges, and local premiums.</p>
+            <p class="price-disclaimer">Indicative international spot rates from Gold-API.com, converted to INR per 10 grams. Final jewellery prices may vary and can include GST, making charges, and local premiums.</p>
         </section>
 
         <section class="collections" aria-labelledby="collections-title">
@@ -474,7 +474,7 @@
                     throw new Error("Price API returned invalid quote data");
                 }
 
-                priceElement.textContent = `${inrFormatter.format(price / troyOunceInGrams)} / g`;
+                priceElement.textContent = inrFormatter.format((price / troyOunceInGrams) * 10);
                 priceElement.dataset.loaded = "true";
                 return updatedAt;
             } catch (error) {
