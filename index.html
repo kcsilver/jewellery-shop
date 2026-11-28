@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover beautiful Silver,gold, diamond, and traditional jewellery in Begusarai, Bihar.">
-    <title>Padma Jewellers | Begusarai, danbanglachowk</title>
+    <title>Padma Jewellers | Begusarai, Near Kali Asthan / Kali Mata Mandir</title>
     <style>
         :root {
             color-scheme: light;
@@ -380,11 +380,18 @@
             margin: 30px auto 0;
         }
 
-        .showroom-photo img {
+        .showroom-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+            width: min(940px, 100%);
+        }
+
+        .showroom-gallery img {
             display: block;
-            width: auto;
-            max-width: 100%;
-            max-height: 360px;
+            width: 100%;
+            height: 360px;
+            object-fit: contain;
             border: 1px solid #e8dece;
             background: var(--white);
         }
@@ -501,6 +508,16 @@
             .inspiration-grid {
                 grid-template-columns: 1fr;
                 width: min(420px, 100%);
+            }
+
+            .showroom-gallery {
+                grid-template-columns: 1fr;
+                width: min(420px, 100%);
+            }
+
+            .showroom-gallery img {
+                height: auto;
+                max-height: 360px;
             }
         }
     </style>
@@ -631,13 +648,19 @@
             <p class="eyebrow">We’d love to see you</p>
             <h2>Visit or Get in Touch</h2>
             <figure class="showroom-photo">
-                <img src="assets/padma-showroom.webp" alt="Padma Jewellers showroom counter and sign" loading="lazy" decoding="async">
+                <div class="showroom-gallery">
+                    <img src="assets/padma-showroom.webp" alt="Padma Jewellers showroom counter and sign" loading="lazy" decoding="async">
+                    <img src="assets/showroom-interior.png" alt="Padma Jewellers showroom counter and interior" loading="lazy" decoding="async">
+                    <img src="assets/showroom-display.png" alt="Jewellery display cases inside Padma Jewellers" loading="lazy" decoding="async">
+                </div>
                 <figcaption>Padma Jewellers · House of Silver &amp; Ratnas</figcaption>
             </figure>
             <div class="contact-grid">
                 <div class="contact-card">
-                    <h3>Call the Showroom</h> HEAD
-                    <a href="tel:+91 7759888984, +91 9534323537 "</a>
+                    <h3>Call the Showroom</h>
+                    <a href="tel:+917759888984">+91 7759888984</a>,
+                    <a href="tel:+919534323537">+91 9534323537</a>
+
 
                     
 
@@ -645,7 +668,7 @@
                 <div class="contact-card">
                     <h3>Showroom Location</h3>
                     <p>
-                        Kali Asthan Main Road (near Kachahari Chowk, opposite Saryu Sadan, 851101)<br>
+                        Kali Asthan Main Road (Kali Asthan,Dakbanglow Road,Below Kisna Jwellers, opposite Saryu Sadan,Begusarai, Bihar, 851101)<br>
                         <a href="https://www.google.com/maps/search/?api=1&amp;query=Kali%20Asthan%20Main%20Road%2C%20near%20Kachahari%20Chowk%2C%20opposite%20Saryu%20Sadan%2C%20Begusarai%2C%20Bihar%20851101" target="_blank" rel="noopener noreferrer">Get directions</a>
                     </p>
                 </div>
