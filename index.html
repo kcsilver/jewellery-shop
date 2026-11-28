@@ -568,13 +568,11 @@
         </section>
 
         <section class="market-prices" id="prices" aria-labelledby="prices-title">
-<<<<<<< HEAD
             <p class="eyebrow">Indicative market rates</p>
             <h2 id="prices-title">Gold &amp; Silver Rates in INR</h2>
 =======
             <p class="eyebrow">IBJA benchmark rates</p>
             <h2 id="prices-title">Indian Domestic Gold &amp; Silver Rates</h2>
->>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
             <div class="price-grid">
                 <article class="price-card">
                     <h3>Gold · 24K (999 purity)</h3>
@@ -597,13 +595,12 @@
                     <p class="price-unit">per 10 grams</p>
                 </article>
             </div>
-<<<<<<< HEAD
             <p class="price-status" id="price-status" role="status" aria-live="polite">Loading indicative market rates…</p>
             <p class="price-disclaimer">Indicative rates are calculated from <a href="https://gold-api.com/" target="_blank" rel="noopener noreferrer">USD gold and silver spot prices</a> converted to INR using <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">USD/INR exchange rates</a>. Rates are per 10 grams and exclude local premiums, GST, and making charges; actual showroom prices may vary.</p>
 =======
             <p class="price-status" id="price-status" role="status" aria-live="polite">Loading Indian domestic rates…</p>
             <p class="price-disclaimer">Source: <a href="https://ibjarates.com/" target="_blank" rel="noopener noreferrer">IBJA benchmark rates</a> via <a href="https://api.dharun.dev/v1/bullion" target="_blank" rel="noopener noreferrer">Dharun India API</a>. Gold rates are per 10 grams; silver is converted from its per-kilogram rate. Rates exclude GST and making charges, and local retail prices may vary.</p>
->>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
+
         </section>
 
         <section class="collections" aria-labelledby="collections-title">
@@ -667,7 +664,7 @@
             currency: "INR",
             maximumFractionDigits: 2
         });
-<<<<<<< HEAD
+
         const indiaDateTimeFormatter = new Intl.DateTimeFormat("en-IN", {
             timeZone: "Asia/Kolkata",
             day: "numeric",
@@ -869,7 +866,7 @@
                         document.getElementById(elementId).textContent = "Unavailable";
                     }
                     updatePriceStatus("Rates are unavailable right now. They will be checked again at the next scheduled update.");
-=======
+
         const rateDateFormatter = new Intl.DateTimeFormat("en-IN", {
             day: "numeric",
             month: "short",
@@ -931,12 +928,11 @@
                         document.getElementById(elementId).textContent = "Unavailable";
                     }
                     status.textContent = "Indian domestic rates are unavailable. Please check your connection and try again.";
->>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
                 }
             }
         }
 
-<<<<<<< HEAD
+
         function updatePricesForCurrentSession() {
             const session = getCurrentSession(new Date());
             if (!session) {
@@ -964,10 +960,10 @@
         showCachedRates();
         updatePricesForCurrentSession();
         scheduleNextUpdate();
-=======
+
         refreshMetalPrices();
         window.setInterval(refreshMetalPrices, 15 * 60 * 1000);
->>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
+
 
         for (const [sourceId, mirrorId] of [
             ["gold-price", "gold-price-header"],
