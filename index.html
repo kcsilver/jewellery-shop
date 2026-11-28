@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover beautiful Silver,gold, diamond, and traditional jewellery in Begusarai, Bihar.">
+    <title>Padma Jewellers | Begusarai, danbanglachowk</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #29231d;
+            --muted: #756c62;
+            --gold: #a77a35;
+            --gold-light: #d7bd8e;
+            --cream: #fbf8f2;
+            --white: #fffefa;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            color: var(--ink);
+            background: var(--cream);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px max(6vw, 24px);
+            background: rgba(255, 254, 250, 0.96);
+            border-bottom: 1px solid #eee6d8;
+        }
+
+        .brand {
+            color: var(--gold);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.03em;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        nav a:focus-visible {
+            color: var(--gold);
+        }
+
+        .header-prices {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-left: auto;
+        }
+
+        .header-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .header-price + .header-price {
+            padding-left: 14px;
+            border-left: 1px solid #eee6d8;
+        }
+
+        .header-price-label {
+            color: var(--gold);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .header-price-value {
+            color: var(--ink);
+            font-size: 0.84rem;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            min-height: 490px;
+            place-items: center;
+            padding: 72px 24px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 120%, #e9d8b8 0, transparent 56%),
+                linear-gradient(135deg, #f8f1e4, #fffdf8 55%, #f2e7d4);
+        }
+
+        .hero::before,
+        .hero::after {
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            border: 1px solid rgba(167, 122, 53, 0.18);
+            border-radius: 50%;
+            content: "";
+        }
+
+        .hero::before {
+            top: -190px;
+            left: -100px;
+        }
+
+        .hero::after {
+            right: -130px;
+            bottom: -200px;
+            width: 390px;
+            height: 390px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: min(720px, 100%);
+        }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--gold);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        h1,
+        h2 {
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 400;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.8rem, 8vw, 5.3rem);
+            line-height: 1.05;
+        }
+
+        .hero-copy {
+            max-width: 550px;
+            margin: 22px auto 30px;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 14px 24px;
+            color: var(--white);
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 3px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .button:hover {
+            color: var(--gold);
+            background: transparent;
+        }
+
+        .button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid var(--gold-light);
+            outline-offset: 3px;
+        }
+
+        .collections {
+            padding: 70px 24px 78px;
+            text-align: center;
+        }
+
+        .inspiration {
+            padding: 70px 24px 78px;
+            text-align: center;
+        }
+
+        .inspiration h2 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            width: min(940px, 100%);
+            margin: 0 auto;
+        }
+
+        .inspiration-card {
+            overflow: hidden;
+            background: var(--white);
+            border: 1px solid #eee5d6;
+            text-align: left;
+        }
+
+        .inspiration-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+        }
+
+        .inspiration-card-copy {
+            padding: 18px 20px 20px;
+        }
+
+        .inspiration-card h3 {
+            margin: 0 0 8px;
+            color: var(--gold);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+
+        .inspiration-card p,
+        .inspiration-note {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .inspiration-note {
+            max-width: 720px;
+            margin: 24px auto 0;
+        }
+
+        .market-prices {
+            padding: 62px 24px;
+            text-align: center;
+            background: var(--white);
+        }
+
+        .market-prices h2 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            width: min(720px, 100%);
+            margin: 32px auto 18px;
+        }
+
+        .price-card {
+            padding: 26px 20px;
+            background: var(--cream);
+            border: 1px solid #eee5d6;
+        }
+
+        .price-card h3 {
+            margin: 0 0 12px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(1.7rem, 5vw, 2.4rem);
+        }
+
+        .price-unit,
+        .price-status,
+        .price-disclaimer {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .price-unit {
+            margin: 6px 0 0;
+        }
+
+        .price-status {
+            min-height: 1.4em;
+            margin: 12px 0 0;
+        }
+
+        .price-disclaimer {
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .collections h2,
+        .contact h2 {
+            margin: 0;
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .section-copy {
+            margin: 12px auto 34px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            width: min(940px, 100%);
+            margin: 0 auto;
+        }
+
+        .collection-card {
+            min-height: 155px;
+            display: grid;
+            place-content: center;
+            gap: 10px;
+            padding: 24px;
+            background: var(--white);
+            border: 1px solid #eee5d6;
+        }
+
+        .collection-card span {
+            color: var(--gold);
+            font-size: 1.6rem;
+        }
+
+        .collection-card h3 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+        }
+
+        .contact {
+            padding: 68px 24px 76px;
+            text-align: center;
+            background: #f0e8da;
+        }
+
+        .showroom-photo {
+            display: grid;
+            justify-items: center;
+            gap: 8px;
+            margin: 30px auto 0;
+        }
+
+        .showroom-photo img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            max-height: 360px;
+            border: 1px solid #e8dece;
+            background: var(--white);
+        }
+
+        .showroom-photo figcaption {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            width: min(720px, 100%);
+            margin: 34px auto 0;
+        }
+
+        .contact-card {
+            padding: 25px 20px;
+            background: var(--white);
+            border: 1px solid #e8dece;
+        }
+
+        .contact-card h3 {
+            margin: 0 0 10px;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .contact-card p,
+        .contact-card a {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .contact-card a {
+            text-decoration-color: var(--gold-light);
+            text-underline-offset: 4px;
+        }
+
+        .phone-note {
+            display: block;
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.82rem;
+        }
+
+        footer {
+            padding: 20px 24px;
+            color: #e9dfd0;
+            background: var(--ink);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 900px) {
+            .site-header {
+                flex-wrap: wrap;
+                gap: 14px 20px;
+            }
+
+            .brand {
+                order: 1;
+            }
+
+            .header-prices {
+                order: 2;
+            }
+
+            nav {
+                order: 3;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                gap: 14px;
+                padding: 16px 20px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 18px;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                min-height: 430px;
+            }
+
+            .price-grid,
+            .collection-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .inspiration-grid {
+                grid-template-columns: 1fr;
+                width: min(420px, 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="brand" href="#home">Padma jewellers</a>
+        <nav aria-label="Main navigation">
+            <a href="#home">Home</a>
+            <a href="#inspiration">Gallery</a>
+            <a href="#prices">Live Rates</a>
+            <a href="#contact">Contact Us</a>
+        </nav>
+        <div class="header-prices" role="group" aria-label="Live gold and silver rates per 10 grams">
+            <div class="header-price">
+                <span class="header-price-label">24K Gold · 10g</span>
+                <strong class="header-price-value" id="gold-price-header">Loading…</strong>
+            </div>
+            <div class="header-price">
+                <span class="header-price-label">Silver · 10g</span>
+                <strong class="header-price-value" id="silver-price-header">Loading…</strong>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h2>"हर नारी का श्रृंगार, हमारे गहनों में बेशुमार प्यार।"</h2>
+                <p class="eyebrow">A touch of timeless beauty</p>
+                <h1>Jewellery to treasure,<br>moments to remember.</h1>
+                <p class="hero-copy">Explore beautiful designs for celebrations, special occasions, and every day at Padma Jewellers.</p>
+                <a class="button" href="#contact">Visit Our Showroom</a>
+            </div>
+        </section>
+
+        <section class="inspiration" id="inspiration" aria-labelledby="inspiration-title">
+            <p class="eyebrow">For every generation</p>
+            <h2 id="inspiration-title">Jewellery for Life’s Celebrations</h2>
+            <p class="section-copy">A little inspiration for everyday silver and traditional occasion styles.</p>
+            <div class="inspiration-grid">
+                <article class="inspiration-card">
+                    <img src="assets/child-silver-chain.jpg" alt="Child wearing a silver chain" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Silver Chain Inspiration</h3>
+                        <p>A simple silver-chain look for a young wearer.</p>
+                    </div>
+                </article>
+                <article class="inspiration-card">
+                    <img src="assets/child-festive-attire.jpg" alt="Child in cream traditional Indian festive attire" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Festive Little Looks</h3>
+                        <p>Traditional Indian attire for family celebrations.</p>
+                    </div>
+                </article>
+                <article class="inspiration-card">
+                    <img src="assets/women-sarees.jpg" alt="Two women wearing traditional sarees and jewellery" loading="lazy" decoding="async">
+                    <div class="inspiration-card-copy">
+                        <h3>Sarees &amp; Gold Details</h3>
+                        <p>Classic occasion styling with traditional jewellery.</p>
+                    </div>
+                </article>
+            </div>
+            <p class="inspiration-note">Stock photos are for style inspiration only. They do not show Padma Jewellers products or imply endorsement.</p>
+        </section>
+
+        <section class="market-prices" id="prices" aria-labelledby="prices-title">
+            <p class="eyebrow">Indicative market rates</p>
+            <h2 id="prices-title">Gold &amp; Silver Rates in INR</h2>
+            <div class="price-grid">
+                <article class="price-card">
+                    <h3>Gold · 24K (999 purity)</h3>
+                    <p class="price-value" id="gold-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+                <article class="price-card">
+                    <h3>Gold · 22K (916 purity)</h3>
+                    <p class="price-value" id="gold-22-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+                <article class="price-card">
+                    <h3>Gold · 18K (750 purity)</h3>
+                    <p class="price-value" id="gold-18-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+                <article class="price-card">
+                    <h3>Silver · 999 purity</h3>
+                    <p class="price-value" id="silver-price" aria-live="polite">Loading…</p>
+                    <p class="price-unit">per 10 grams</p>
+                </article>
+            </div>
+            <p class="price-status" id="price-status" role="status" aria-live="polite">Loading indicative market rates…</p>
+            <p class="price-disclaimer">Indicative rates are calculated from <a href="https://gold-api.com/" target="_blank" rel="noopener noreferrer">USD gold and silver spot prices</a> converted to INR using <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">USD/INR exchange rates</a>. Rates are per 10 grams and exclude local premiums, GST, and making charges; actual showroom prices may vary.</p>
+        </section>
+
+        <section class="collections" aria-labelledby="collections-title">
+            <p class="eyebrow">Made for your moments</p>
+            <h2 id="collections-title">Discover Our Collections</h2>
+            <p class="section-copy">Find a style that feels like you.</p>
+            <div class="collection-grid">
+                <article class="collection-card">
+                    <span aria-hidden="true">✧</span>
+                    <h3>Gold Jewellery</h3>
+                </article>
+                <article class="collection-card">
+                    <span aria-hidden="true">✧</span>
+                    <h3>Silver Jewellery</h3>
+                </article>
+                <article class="collection-card">
+                    <span aria-hidden="true">◇</span>
+                    <h3>Diamond Designs</h3>
+                </article>
+                <article class="collection-card">
+                    <span aria-hidden="true">❋</span>
+                    <h3>Traditional Styles</h3>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <p class="eyebrow">We’d love to see you</p>
+            <h2>Visit or Get in Touch</h2>
+            <figure class="showroom-photo">
+                <img src="assets/padma-showroom.webp" alt="Padma Jewellers showroom counter and sign" loading="lazy" decoding="async">
+                <figcaption>Padma Jewellers · House of Silver &amp; Ratnas</figcaption>
+            </figure>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Call the Showroom</h3>
+                    <a href="tel:+91 7759888984, ">+91 9534323537</a>
+                </div>
+                <div class="contact-card">
+                    <h3>Showroom Location</h3>
+                    <p>
+                        Kali Asthan Main Road (near Kachahari Chowk, opposite Saryu Sadan, 851101)<br>
+                        <a href="https://www.google.com/maps/search/?api=1&amp;query=Kali%20Asthan%20Main%20Road%2C%20near%20Kachahari%20Chowk%2C%20opposite%20Saryu%20Sadan%2C%20Begusarai%2C%20Bihar%20851101" target="_blank" rel="noopener noreferrer">Get directions</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Padma Jewellers · Begusarai, Bihar</p>
+        <p>Price may vary based on market conditions.</p>
+    </footer>
+
+    <script>
+        const inrFormatter = new Intl.NumberFormat("en-IN", {
+            style: "currency",
+            currency: "INR",
+            maximumFractionDigits: 2
+        });
+        const indiaDateTimeFormatter = new Intl.DateTimeFormat("en-IN", {
+            timeZone: "Asia/Kolkata",
+            day: "numeric",
+            month: "short",
+            year: "numeric",
+            hour: "numeric",
+            minute: "2-digit",
+            hour12: true
+        });
+        const indiaClockFormatter = new Intl.DateTimeFormat("en-GB", {
+            timeZone: "Asia/Kolkata",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            hourCycle: "h23"
+        });
+        const priceCacheKey = "padma-jewellers-metal-prices-v1";
+        const attemptedSessionKey = "padma-jewellers-metal-price-session-v1";
+        const updateSessions = [
+            { hour: 9, label: "morning" },
+            { hour: 17, label: "evening" },
+            { hour: 21, label: "night" }
+        ];
+        const priceTargets = [
+            { elementId: "gold-price", key: "gold24" },
+            { elementId: "gold-22-price", key: "gold22" },
+            { elementId: "gold-18-price", key: "gold18" },
+            { elementId: "silver-price", key: "silver" }
+        ];
+        const gramsPerTroyOunce = 31.1034768;
+        const indiaOffsetMinutes = 330;
+        let cachedRates = null;
+        let refreshTimer;
+
+        function readStorage(key) {
+            try {
+                return window.localStorage.getItem(key);
+            } catch (error) {
+                console.warn("Browser storage is unavailable; scheduled price caching is disabled:", error);
+                return null;
+            }
+        }
+
+        function writeStorage(key, value) {
+            try {
+                window.localStorage.setItem(key, value);
+            } catch (error) {
+                console.warn("Unable to save scheduled price data in browser storage:", error);
+            }
+        }
+
+        function getIndiaClock(now) {
+            const parts = Object.fromEntries(indiaClockFormatter.formatToParts(now)
+                .filter(part => part.type !== "literal")
+                .map(part => [part.type, part.value]));
+            return {
+                year: Number(parts.year),
+                month: Number(parts.month),
+                day: Number(parts.day),
+                hour: Number(parts.hour),
+                minute: Number(parts.minute)
+            };
+        }
+
+        function getCurrentSession(now) {
+            const clock = getIndiaClock(now);
+            const currentMinutes = clock.hour * 60 + clock.minute;
+            let sessionIndex = -1;
+            for (let index = 0; index < updateSessions.length; index += 1) {
+                if (currentMinutes >= updateSessions[index].hour * 60) {
+                    sessionIndex = index;
+                }
+            }
+
+            if (sessionIndex < 0) {
+                return null;
+            }
+
+            const dateKey = `${clock.year}-${String(clock.month).padStart(2, "0")}-${String(clock.day).padStart(2, "0")}`;
+            return {
+                key: `${dateKey}-${sessionIndex}`,
+                index: sessionIndex,
+                label: updateSessions[sessionIndex].label
+            };
+        }
+
+        function getNextSessionTime(now) {
+            const clock = getIndiaClock(now);
+            const currentSession = getCurrentSession(now);
+            const nextSessionIndex = currentSession
+                ? updateSessions.findIndex((session, index) => index > currentSession.index)
+                : 0;
+            const nextDayOffset = currentSession && nextSessionIndex < 0 ? 1 : 0;
+            const nextSession = updateSessions[nextSessionIndex < 0 ? 0 : nextSessionIndex];
+            const localDateAsUtc = Date.UTC(clock.year, clock.month - 1, clock.day + nextDayOffset, nextSession.hour);
+            return new Date(localDateAsUtc - indiaOffsetMinutes * 60 * 1000);
+        }
+
+        function formatIndiaDateTime(date) {
+            return `${indiaDateTimeFormatter.format(date)} IST`;
+        }
+
+        function renderRates(rates) {
+            for (const { elementId, key } of priceTargets) {
+                const element = document.getElementById(elementId);
+                element.textContent = inrFormatter.format(rates[key]);
+                element.dataset.loaded = "true";
+            }
+        }
+
+        function showCachedRates() {
+            const storedRates = readStorage(priceCacheKey);
+            if (!storedRates) {
+                return false;
+            }
+
+            try {
+                const parsedRates = JSON.parse(storedRates);
+                const hasValidPrices = priceTargets.every(({ key }) =>
+                    Number.isFinite(parsedRates.prices[key]) && parsedRates.prices[key] > 0);
+                const updatedAt = new Date(parsedRates.updatedAt);
+                if (!hasValidPrices || Number.isNaN(updatedAt.getTime())) {
+                    throw new Error("Stored metal price data is invalid");
+                }
+
+                cachedRates = parsedRates;
+                renderRates(cachedRates.prices);
+                return true;
+            } catch (error) {
+                console.error("Unable to load cached metal prices:", error);
+                return false;
+            }
+        }
+
+        function updatePriceStatus(message) {
+            document.getElementById("price-status").textContent = message;
+        }
+
+        function showScheduledStatus() {
+            const nextUpdate = formatIndiaDateTime(getNextSessionTime(new Date()));
+            if (cachedRates) {
+                updatePriceStatus(`Indicative spot rates as of ${formatIndiaDateTime(new Date(cachedRates.updatedAt))}. Next scheduled update: ${nextUpdate}.`);
+            } else {
+                updatePriceStatus(`Rates will be fetched at the next scheduled update: ${nextUpdate}.`);
+            }
+        }
+
+        async function refreshMetalPrices(session) {
+            writeStorage(attemptedSessionKey, session.key);
+            try {
+                const [goldResponse, silverResponse, exchangeResponse] = await Promise.all([
+                    fetch("https://api.gold-api.com/price/XAU", { cache: "no-store" }),
+                    fetch("https://api.gold-api.com/price/XAG", { cache: "no-store" }),
+                    fetch("https://open.er-api.com/v6/latest/USD", { cache: "no-store" })
+                ]);
+                if (!goldResponse.ok || !silverResponse.ok || !exchangeResponse.ok) {
+                    throw new Error(`Price service returned HTTP ${goldResponse.status}/${silverResponse.status}/${exchangeResponse.status}`);
+                }
+
+                const [goldQuote, silverQuote, exchangeQuote] = await Promise.all([
+                    goldResponse.json(),
+                    silverResponse.json(),
+                    exchangeResponse.json()
+                ]);
+                const usdToInr = Number(exchangeQuote && exchangeQuote.rates && exchangeQuote.rates.INR);
+                const goldUsdPerOunce = Number(goldQuote && goldQuote.price);
+                const silverUsdPerOunce = Number(silverQuote && silverQuote.price);
+                const goldTimestamp = Date.parse(goldQuote && goldQuote.updatedAt);
+                const silverTimestamp = Date.parse(silverQuote && silverQuote.updatedAt);
+                if (
+                    !Number.isFinite(usdToInr) || usdToInr <= 0 ||
+                    !Number.isFinite(goldUsdPerOunce) || goldUsdPerOunce <= 0 ||
+                    !Number.isFinite(silverUsdPerOunce) || silverUsdPerOunce <= 0 ||
+                    !Number.isFinite(goldTimestamp) || !Number.isFinite(silverTimestamp)
+                ) {
+                    throw new Error("Price services returned invalid spot prices or USD/INR rates");
+                }
+
+                const gold24 = goldUsdPerOunce * usdToInr * 10 / gramsPerTroyOunce;
+                const prices = {
+                    gold24: gold24 * 0.999,
+                    gold22: gold24 * (916 / 1000),
+                    gold18: gold24 * (750 / 1000),
+                    silver: silverUsdPerOunce * usdToInr * 10 / gramsPerTroyOunce * 0.999
+                };
+                const updatedAt = new Date(Math.max(goldTimestamp, silverTimestamp)).toISOString();
+                cachedRates = { prices, updatedAt, session: session.label };
+                writeStorage(priceCacheKey, JSON.stringify(cachedRates));
+                renderRates(prices);
+                showScheduledStatus();
+            } catch (error) {
+                console.error("Unable to update indicative gold and silver rates:", error);
+                if (cachedRates) {
+                    updatePriceStatus(`Scheduled update failed; showing the previous rates from ${formatIndiaDateTime(new Date(cachedRates.updatedAt))}.`);
+                } else {
+                    for (const { elementId } of priceTargets) {
+                        document.getElementById(elementId).textContent = "Unavailable";
+                    }
+                    updatePriceStatus("Rates are unavailable right now. They will be checked again at the next scheduled update.");
+                }
+            }
+        }
+
+        function updatePricesForCurrentSession() {
+            const session = getCurrentSession(new Date());
+            if (!session) {
+                showScheduledStatus();
+                return;
+            }
+
+            if (readStorage(attemptedSessionKey) === session.key) {
+                showScheduledStatus();
+                return;
+            }
+
+            refreshMetalPrices(session);
+        }
+
+        function scheduleNextUpdate() {
+            window.clearTimeout(refreshTimer);
+            const delay = Math.max(1000, getNextSessionTime(new Date()).getTime() - Date.now() + 1000);
+            refreshTimer = window.setTimeout(() => {
+                updatePricesForCurrentSession();
+                scheduleNextUpdate();
+            }, delay);
+        }
+
+        showCachedRates();
+        updatePricesForCurrentSession();
+        scheduleNextUpdate();
+
+        for (const [sourceId, mirrorId] of [
+            ["gold-price", "gold-price-header"],
+            ["silver-price", "silver-price-header"]
+        ]) {
+            const source = document.getElementById(sourceId);
+            const mirror = document.getElementById(mirrorId);
+            const syncPrice = () => {
+                mirror.textContent = source.textContent;
+            };
+
+            syncPrice();
+            new MutationObserver(syncPrice).observe(source, {
+                childList: true,
+                characterData: true,
+                subtree: true
+            });
+        }
+    </script>
+</body>
+</html>
