@@ -568,8 +568,13 @@
         </section>
 
         <section class="market-prices" id="prices" aria-labelledby="prices-title">
+<<<<<<< HEAD
             <p class="eyebrow">Indicative market rates</p>
             <h2 id="prices-title">Gold &amp; Silver Rates in INR</h2>
+=======
+            <p class="eyebrow">IBJA benchmark rates</p>
+            <h2 id="prices-title">Indian Domestic Gold &amp; Silver Rates</h2>
+>>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
             <div class="price-grid">
                 <article class="price-card">
                     <h3>Gold · 24K (999 purity)</h3>
@@ -592,8 +597,13 @@
                     <p class="price-unit">per 10 grams</p>
                 </article>
             </div>
+<<<<<<< HEAD
             <p class="price-status" id="price-status" role="status" aria-live="polite">Loading indicative market rates…</p>
             <p class="price-disclaimer">Indicative rates are calculated from <a href="https://gold-api.com/" target="_blank" rel="noopener noreferrer">USD gold and silver spot prices</a> converted to INR using <a href="https://www.exchangerate-api.com/" target="_blank" rel="noopener noreferrer">USD/INR exchange rates</a>. Rates are per 10 grams and exclude local premiums, GST, and making charges; actual showroom prices may vary.</p>
+=======
+            <p class="price-status" id="price-status" role="status" aria-live="polite">Loading Indian domestic rates…</p>
+            <p class="price-disclaimer">Source: <a href="https://ibjarates.com/" target="_blank" rel="noopener noreferrer">IBJA benchmark rates</a> via <a href="https://api.dharun.dev/v1/bullion" target="_blank" rel="noopener noreferrer">Dharun India API</a>. Gold rates are per 10 grams; silver is converted from its per-kilogram rate. Rates exclude GST and making charges, and local retail prices may vary.</p>
+>>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
         </section>
 
         <section class="collections" aria-labelledby="collections-title">
@@ -630,7 +640,11 @@
             <div class="contact-grid">
                 <div class="contact-card">
                     <h3>Call the Showroom</h3>
+<<<<<<< HEAD
                     <a href="tel:+91 7759888984, ">+91 9534323537</a>
+=======
+                    <a href="tel:+919891776145">+91 98917 76145</a>
+>>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
                 </div>
                 <div class="contact-card">
                     <h3>Showroom Location</h3>
@@ -654,6 +668,7 @@
             currency: "INR",
             maximumFractionDigits: 2
         });
+<<<<<<< HEAD
         const indiaDateTimeFormatter = new Intl.DateTimeFormat("en-IN", {
             timeZone: "Asia/Kolkata",
             day: "numeric",
@@ -855,10 +870,74 @@
                         document.getElementById(elementId).textContent = "Unavailable";
                     }
                     updatePriceStatus("Rates are unavailable right now. They will be checked again at the next scheduled update.");
+=======
+        const rateDateFormatter = new Intl.DateTimeFormat("en-IN", {
+            day: "numeric",
+            month: "short",
+            year: "numeric"
+        });
+        const domesticRateTargets = [
+            { elementId: "gold-price", metal: "gold", purity: "999" },
+            { elementId: "gold-22-price", metal: "gold", purity: "916" },
+            { elementId: "gold-18-price", metal: "gold", purity: "750" },
+            { elementId: "silver-price", metal: "silver", purity: "999" }
+        ];
+
+        async function refreshMetalPrices() {
+            const status = document.getElementById("price-status");
+            try {
+                const response = await fetch("https://api.dharun.dev/v1/bullion?utm_source=padma-jewellers&utm_medium=website");
+                if (!response.ok) {
+                    throw new Error(`Bullion API returned HTTP ${response.status}`);
+                }
+
+                const quote = await response.json();
+                if (!quote || !quote.data || !Array.isArray(quote.data.rates) || typeof quote.data.date !== "string") {
+                    throw new Error("Bullion API returned invalid rate data");
+                }
+
+                const rateDate = new Date(`${quote.data.date}T00:00:00`);
+                const goldBenchmark = quote.data.rates.find(rate => rate.metal === "gold" && rate.purity === "999");
+                if (Number.isNaN(rateDate.getTime()) || !goldBenchmark || !["AM", "PM"].includes(goldBenchmark.session)) {
+                    throw new Error("Bullion API returned invalid benchmark date or session");
+                }
+
+                const ratesToDisplay = domesticRateTargets.map(({ elementId, metal, purity }) => {
+                    const rate = quote.data.rates.find(item => item.metal === metal && item.purity === purity);
+                    const perGram = Number(rate && rate.perGram);
+                    const element = document.getElementById(elementId);
+                    if (!Number.isFinite(perGram) || perGram <= 0 || !element) {
+                        throw new Error(`Bullion API is missing a valid ${metal} ${purity} rate`);
+                    }
+
+                    return { element, pricePer10Grams: perGram * 10 };
+                });
+
+                for (const { element, pricePer10Grams } of ratesToDisplay) {
+                    element.textContent = inrFormatter.format(pricePer10Grams);
+                    element.dataset.loaded = "true";
+                }
+
+                status.textContent = `IBJA ${goldBenchmark.session} benchmark · ${rateDateFormatter.format(rateDate)} · rates update during AM/PM sessions`;
+            } catch (error) {
+                console.error("Unable to update Indian domestic metal prices:", error);
+                const hasPreviousRates = domesticRateTargets.some(({ elementId }) => {
+                    const element = document.getElementById(elementId);
+                    return element && element.dataset.loaded === "true";
+                });
+                if (hasPreviousRates) {
+                    status.textContent = "Unable to refresh IBJA rates; previous benchmark rates are retained.";
+                } else {
+                    for (const { elementId } of domesticRateTargets) {
+                        document.getElementById(elementId).textContent = "Unavailable";
+                    }
+                    status.textContent = "Indian domestic rates are unavailable. Please check your connection and try again.";
+>>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
                 }
             }
         }
 
+<<<<<<< HEAD
         function updatePricesForCurrentSession() {
             const session = getCurrentSession(new Date());
             if (!session) {
@@ -886,6 +965,10 @@
         showCachedRates();
         updatePricesForCurrentSession();
         scheduleNextUpdate();
+=======
+        refreshMetalPrices();
+        window.setInterval(refreshMetalPrices, 15 * 60 * 1000);
+>>>>>>> c1ec8018c9cd90ec4b5f7f02cce0837309cb67ee
 
         for (const [sourceId, mirrorId] of [
             ["gold-price", "gold-price-header"],
